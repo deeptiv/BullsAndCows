@@ -3,17 +3,34 @@
  * A two-player game.
  */
 class Game {
+    Player wordMakerPlayer;
+	Player wordBreakerPlayer;
+    String gameId;
 
-  
+    public Player getWordMakerPlayer() {
+		return wordMakerPlayer;
+	}
+	public void setWordMakerPlayer(Player wordMakerPlayer) {
+		this.wordMakerPlayer = wordMakerPlayer;
+	}
+	public Player getWordBreakerPlayer() {
+		return wordBreakerPlayer;
+	}
+	public void setWordBreakerPlayer(Player wordBreakerPlayer) {
+		this.wordBreakerPlayer = wordBreakerPlayer;
+	}
+
+	public String getGameId() {
+		return gameId;
+	}
+	public void setGameId(String gameId) {
+		this.gameId = gameId;
+	}
+
+
 
     /**
-     * The current player.
-     */
-    Player currentPlayer;
-
-    /**
-     * Returns whether the current state of the board is such that one
-     * of the players is a winner.
+     * Returns whether the current state of the game
      */
     public static boolean isGameOver(BullsAndCows bullsAndCows){
 		if (bullsAndCows.getBulls() == 4) 
@@ -24,14 +41,7 @@ class Game {
     
 
     /**
-     * Called by the player threads when a player tries to make a
-     * move.  This method checks to see if the move is legal: that
-     * is, the player requesting the move must be the current player
-     * and the square in which she is trying to move must not already
-     * be occupied.  If the move is legal the game state is updated
-     * (the square is set and the next player becomes current) and
-     * the other player is notified of the move so it can update its
-     * client.
+     *  This method checks to see if the input is legal
      */
     public synchronized boolean legalInput(String inputString) {
     	if (Utilities.checkInputStringLenghtAndValidDictWord(inputString)){
